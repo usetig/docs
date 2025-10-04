@@ -16,8 +16,10 @@
           {
             "group": "Getting started",
             "pages": [
+              "index",
               "quickstart",
-              "quickstart-mcp"
+              "quickstart-mcp",
+              "examples"
             ]
           }
         ]
