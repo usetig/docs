@@ -1,0 +1,47 @@
+---
+title: "Quickstart: MCP Tool"
+---
+
+## Get started with Tig MCP Tool
+
+Tig's MCP (Model Context Protocol) Tool allows you to fetch the most relevant context from your project's history. 
+
+### Step 1: Create an account
+
+Go to [app.usetig.dev](https://app.usetig.dev) and create an account to get started with Tig.
+
+### Step 2: Generate an API key
+
+In your Tig dashboard, navigate to the API settings and generate a new API key. Copy the key to your clipboard - you'll need it to configure the MCP Tool with your AI assistant.
+
+<img src="/images/apikey.png" alt="API Key Generation" width="600" />
+
+### Step 3: Configure MCP in Cursor
+
+1. Open **Cursor Settings** 
+2. Click on the **MCP** tab
+3. Add the following configuration, replacing `<tig-api-key>` with the API key you copied in Step 2:
+
+```json
+{
+  "mcpServers": {
+    "tig-mcp": {
+      "transport": "streamableHttp",
+      "url": "http://localhost:8080/mcp",
+      "headers": {
+        "x-api-key": "<tig-api-key>"
+      }
+    }
+  }
+}
+```
+
+### Step 4: Verify tool is enabled
+
+After adding the configuration, you should see the Tig MCP tool appear in your Cursor interface. The tool will be available for use in your AI conversations.
+
+<img src="/images/mcp.png" alt="MCP Tool Enabled" width="600" />
+
+## 🎉 Congratulations! You're set up with Tig's MCP Tool
+
+Your AI assistant can now access context through Tig's MCP Tool for enhanced feature development.
