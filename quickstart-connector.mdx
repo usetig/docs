@@ -1,0 +1,176 @@
+---
+title: "Quickstart: Tig Connector"
+description: "Install the Tig Connector GitHub App to enable branch remapping and PR automation"
+---
+
+## Install the Tig Connector GitHub App
+
+The **Tig Connector** GitHub App enables branch remapping and PR automation for your repositories. Follow these steps to manually install the app on one or more repositories.
+
+<Note>
+Share these steps with anyone who needs to link their GitHub repos to Tig without relying on the CLI automation.
+</Note>
+
+## Prerequisites
+
+Before you begin, ensure you have:
+
+- GitHub account with **Admin** access to the repository (or organization) where Tig should run
+- Browser access to GitHub
+- Optional: Know the repository name(s) you want to connect in advance
+
+<Warning>
+You must have admin rights to install GitHub Apps. If you lack these permissions, ask an org admin to perform the installation.
+</Warning>
+
+## Installation Steps
+
+<Steps>
+<Step title="Open the Installation Page">
+  Visit the public Tig Connector page and start the installation process:
+
+  1. Go to `https://github.com/apps/tig-connector`
+  2. Click **Install** in the upper-right corner
+  
+  <Note>
+  GitHub may ask you to log in first if you're not already authenticated.
+  </Note>
+</Step>
+
+<Step title="Choose Installation Scope">
+  Select where you want to install the app:
+
+  <Tabs>
+  <Tab title="Personal Account">
+    Choose this if the repositories live under your GitHub username. Click **Install** next to your username.
+  </Tab>
+
+  <Tab title="Organization">
+    If the repository belongs to an organization, select the org name. You must be an admin for that organization. Click **Install** next to the organization name.
+  </Tab>
+  </Tabs>
+</Step>
+
+<Step title="Select Repositories">
+  Choose which repositories should have access to Tig Connector:
+
+  **Option 1: All repositories**
+  - Grants access to every repo now and in the future under that owner
+  - Useful for org-wide rollout
+
+  **Option 2: Only select repositories** (recommended)
+  - Provides fine-grained control over which repos have access
+  - Click **Only select repositories**
+  - Use the search box to find each repo Tig should monitor
+  - Check the box beside every repository you want to enable
+
+  <Tip>
+  If you're following instructions from `tig setup`, make sure you select the exact repository you just configured locally.
+  </Tip>
+
+  Click **Install** (or **Authorize & Install**) to proceed.
+</Step>
+
+<Step title="Grant Requested Permissions">
+  Tig Connector requires specific read/write scopes to function properly:
+
+  - Pull requests
+  - Commits
+  - Metadata
+  - Other repository permissions for keeping branches in sync
+
+  Review the permissions summary and click **Authorize** if prompted.
+
+  <Check>
+  GitHub will redirect you back to a confirmation page once permissions are granted.
+  </Check>
+</Step>
+
+<Step title="Confirm Installation">
+  Verify that the installation was successful:
+
+  1. Open the repository in GitHub
+  2. Go to **Settings → Integrations → GitHub Apps**
+  3. Under **Installed GitHub Apps**, verify that **Tig Connector** appears and is marked as installed
+  4. (Optional) Click **Configure** beside the app to double-check which repositories are selected
+
+  <Info>
+  If you installed it for an organization, you can also visit the organization settings under **Installed GitHub Apps** for a global view.
+  </Info>
+</Step>
+
+<Step title="Return to Tig">
+  Complete the setup process:
+
+  - **If using the CLI**: Return to your terminal and press **Enter** (or re-run the command) so the CLI can detect the fresh installation
+  - **If using the web app**: Refresh the dashboard—the app should now show the repo as connected
+
+  <Check>
+  Run `tig status` to verify the GitHub App state once installation is complete.
+  </Check>
+</Step>
+</Steps>
+
+## Managing Repository Access
+
+Need to add more repositories later? You can modify your installation at any time:
+
+1. Visit your installations page:
+   - **Personal account**: `https://github.com/settings/installations`
+   - **Organization**: Go to your organization's **Installed GitHub Apps** page
+2. Click **Configure** beside Tig Connector
+3. Add or remove repositories as needed
+
+## Troubleshooting
+
+<AccordionGroup>
+<Accordion title="Can't see the repository">
+  Ensure you chose the correct owner (personal vs organization). For organizations, you need admin rights, and the repository must not be archived.
+</Accordion>
+
+<Accordion title="Permissions warning">
+  You may be missing required scopes. Reinstall the app and accept all requested permissions to resolve this issue.
+</Accordion>
+
+<Accordion title="CLI still warns after installation">
+  Wait a few seconds and rerun `tig setup`. If the issue persists, verify that the repository is included under the app configuration in GitHub settings.
+</Accordion>
+
+<Accordion title="403 or forbidden errors">
+  Your GitHub account lacks admin rights. Ask an organization admin to perform the installation on your behalf.
+</Accordion>
+
+<Accordion title="App already installed but not working">
+  1. Visit your GitHub installations page
+  2. Click **Configure** beside Tig Connector
+  3. Verify the specific repository is selected
+  4. Check that all required permissions are granted
+  5. Run `tig status` to verify the connection
+</Accordion>
+</AccordionGroup>
+
+## Next Steps
+
+Now that you've installed the Tig Connector, you can:
+
+<CardGroup cols={2}>
+<Card title="Upload Chats" icon="upload" href="/quickstart">
+  Start saving your AI conversations with the Tig NPM package
+</Card>
+
+<Card title="MCP Tool" icon="plug" href="/quickstart-mcp">
+  Set up the MCP tool to fetch context in your AI assistant
+</Card>
+</CardGroup>
+
+## Need Help?
+
+<Card title="Contact Support" icon="headset" href="https://usetig.dev/contact" horizontal>
+  Reach out to our team for assistance with the Tig Connector
+</Card>
+
+---
+
+<Info>
+Installing the Tig Connector GitHub App brings branch remapping and PR automation online—make sure every repo using Tig has the app enabled.
+</Info>
