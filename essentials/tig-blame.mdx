@@ -1,0 +1,75 @@
+---
+title: Tig Blame
+sidebarTitle: Tig Blame
+order: 6
+---
+
+Tig Blame maps any line of code in your repository back to the Cursor/Coppilot interaction that introduced it. Use it to understand context, continue conversations, and unblock reviews.
+
+## Prerequisites
+
+- Tig CLI installed and configured in the repo (`tig setup` completed)
+- Cursor integration extracting chats to Tig (post-commit gathers interactions)
+
+## Basic Usage
+
+```
+$ tig blame src/app.ts:42
+Add user authentication with JWT tokens
+https://app.usetig.dev/conversations/1234?interaction=abcd
+```
+
+This prints a short preview of the originating prompt and a deep link to the Tig web app.
+
+### Debug Mode
+
+```
+$ tig blame src/app.ts:42 --debug
+[debug] Repo: .
+[debug] File: src/app.ts:42
+[debug] Commit: 9b8eafc...
+[debug] Line content: 'return auth.login(user)'
+...
+```
+
+With `--debug`, the CLI adds:
+
+- Commit hash and blame metadata
+- Candidate file paths
+- Filter mode (whether matches were scoped to the file or entire commit)
+- Interaction occurrence counts (if duplicates were collapsed)
+
+## Path Variants
+
+`tig blame` accepts relative or absolute paths.
+
+Examples:
+
+```
+# Relative
+tig blame documentation/blame.md:12
+
+# Absolute
+tig blame $PWD/documentation/blame.md:12
+```
+
+Both produce equivalent results.
+
+## Understanding the Output
+
+- **Single match**: simple two-line output (preview + link)
+- **Multiple matches**: numbered list with links (`Occurrences in diff` only when `--debug`)
+- **No matches**: CLI prints possible reasons (manual edits, missing interactions, etc.)
+
+Preview text is trimmed to ~100 characters; open the Tig link for full context.
+
+## Troubleshooting
+
+| Symptom | Cause | Fix |
+| --- | --- | --- |
+| `git blame failed` | File/path typo or blame config issue | Verify the path, run blame manually |
+| `No matching interactions found` | Commit has no AI diffs for that line | Check interactions in Tig web app; ensure `tig setup` ran when the change was made |
+| `Internal server error` | Server side issue | Retry later |
+| `The selected line has no content` | Request pointed to blank line | Choose a line with code |
+
+Have feedback? Share it us at support@usetig.dev
