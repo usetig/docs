@@ -42,6 +42,28 @@ After adding the configuration, you should see the Tig MCP tool appear in your C
 
 <img src="/images/mcp.png" alt="MCP Tool Enabled" width="600" />
 
+### Step 5: Using the Tig MCP Tool
+
+Once the MCP Tool is enabled, your model can use it to fetch relevant context from your project's history.
+
+#### Basic Usage
+
+Explicitly request context retrieval by asking questions like:
+
+- "Fetch relevant context about our previous work on this feature"
+- "What context do we have about similar implementations?"
+- "Retrieve information about past decisions made for this component"
+
+Implementing new features on top of existing code:
+
+- "Explain how this waitlist endpoint was implemented and add a field to pass in company as well"
+- "Show me how user authentication works in this codebase and implement a password reset feature"
+- "Fetch payment processing logic and add support for subscription billing"
+
+<Note>
+The agent will decide when to use the MCP Tool based on the complexity of the task. To ensure Tig MCP is used, request to fetch context first before any implementation. 
+</Note>
+
 ## 🎉 Congratulations! You're set up with Tig's MCP Tool
 
 Your AI assistant can now access context through Tig's MCP Tool for enhanced feature development.

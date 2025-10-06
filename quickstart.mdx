@@ -32,6 +32,10 @@ tig login
 
 This will authenticate your local Tig installation with your GitHub account.
 
+<Note>
+The login process will prompt you with an 8-character code. You'll need to go to [https://github.com/login/device](https://github.com/login/device) to enter this code and complete the authentication.
+</Note>
+
 ### Step 4: Ensure remote repository is set
 
 Make sure your project has a remote repository configured:
@@ -62,10 +66,13 @@ tig setup
 
 Tig will automatically create a `.cursorrules` file in your project directory to configure the Tig MCP Tool. This file contains the necessary configuration for Cursor to access Tig's context.
 
+<Note>
+The GitHub app will also need repository-specific access in order to reconcile actions that happen in your repository, such as merges and rebases. This access allows Tig to maintain accurate context and history of your development workflow. Refer to the [Tig Connector Quickstart](/quickstart-connector) documentation
+</Note>
+
 <Warning>
 Run `tig setup` in each project directory where you want to use Tig. This command configures Tig specifically for that project.
 </Warning>
-
 
 ### Step 6: Upload your first chat
 
@@ -78,6 +85,10 @@ If you have an existing project with chat history, you can upload all past chats
 ```bash
 tig upload-chats
 ```
+
+<Note>
+Note that Cursor will sometimes delete chats, which can prevent Tig from extracting all available chat history. This is a limitation of how Cursor manages its local chat storage.
+</Note>
 
 #### For new projects
 
