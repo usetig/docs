@@ -1,28 +1,141 @@
 ---
-title: "Introduction"
-description: "Welcome to the new home for your documentation"
+title: "Welcome to Tig"
+description: "Capture, share, and search your AI development conversations"
 ---
 
-## Setting up
+## What is Tig?
 
-Get your documentation site up and running in minutes.
+Tig is a platform that automatically captures AI conversations from tools like **Cursor**, **Claude Code**, and **Windsurf**, linking them to your commits and pull requests. It provides your team with searchable context for every line of code built with AI assistance.
+
+<CardGroup cols={2}>
+<Card title="Automatic Capture" icon="robot">
+  Tig runs in the background during git commits and pushes—no manual saving required
+</Card>
+
+<Card title="PR View" icon="code-pull-request">
+  Automatically posts links to view all AI interactions when you open a pull request
+</Card>
+
+<Card title="Code Context" icon="code-commit">
+  See exactly which AI conversations led to each line of code with Tig Blame
+</Card>
+
+<Card title="Team Search" icon="magnifying-glass">
+  Search across all conversations to find how similar problems were solved
+</Card>
+</CardGroup>
+
+## How It Works
+
+<Steps>
+<Step title="Install Tig">
+  Install the NPM package and authenticate with GitHub
+
+  ```bash
+  npm install -g @tigtech/tig-cursor
+  tig login
+  ```
+</Step>
+
+<Step title="Set Up Your Project">
+  Run setup in your project directory to configure automatic capturing
+
+  ```bash
+  cd /path/to/your/project
+  tig setup
+  ```
+</Step>
+
+<Step title="Install GitHub App">
+  Install the Tig Connector GitHub App to enable PR view automation and state tracking
+</Step>
+
+<Step title="Code as Usual">
+  Continue using your AI assistant—Tig automatically captures conversations on commit and push
+</Step>
+
+<Step title="Review PRs with Context">
+  When you open a PR, Tig posts a comment with a link to view all AI interactions chronologically
+</Step>
+</Steps>
+
+## Key Features
+
+### PR View
+When you open a pull request, the Tig Connector automatically posts a comment with a link to view all AI interactions from commits in the PR. Perfect for code reviews and understanding development context.
+
+[Learn more about PR View →](/essentials/pr-view)
+
+### Tig Blame
+Click any line of code in your Tig dashboard to see which AI conversations led to its creation—similar to `git blame` but for AI context.
+
+[Learn more about Tig Blame →](/essentials/tig-blame)
+
+### MCP Tool
+Fetch context from previous conversations directly in your AI assistant using the Model Context Protocol.
+
+[Set up MCP →](/quickstart-mcp)
+
+### State Tracking
+The Tig Connector keeps your PR metadata in sync with GitHub, automatically updating states (open/closed/merged) and timestamps.
+
+[Install Tig Connector →](/quickstart-connector)
+
+## Quick Start Guides
+
+<CardGroup cols={3}>
+<Card
+  title="Saving Chats"
+  icon="messages"
+  href="/quickstart"
+>
+  Install Tig and start capturing AI conversations automatically
+</Card>
 
 <Card
-  title="Start here"
+  title="MCP Tool"
+  icon="plug"
+  href="/quickstart-mcp"
+>
+  Set up the MCP tool to access Tig context in Claude or other AI assistants
+</Card>
+
+<Card
+  title="GitHub Connector"
+  icon="github"
+  href="/quickstart-connector"
+>
+  Install the GitHub App for PR view automation and state tracking
+</Card>
+</CardGroup>
+
+## Who Should Use Tig?
+
+### Development Teams
+- **Code reviewers** - Understand why code was written a certain way
+- **New team members** - Learn from past AI conversations
+- **Tech leads** - Track how AI is being used across the team
+
+### Solo Developers
+- **Context continuity** - Remember what you built and why
+- **Knowledge base** - Search your own AI conversation history
+- **Documentation** - Auto-document complex decisions made with AI
+
+## Get Started
+
+Ready to capture your first AI conversation?
+
+<Card
+  title="Get Started in 5 Minutes"
   icon="rocket"
   href="/quickstart"
   horizontal
 >
-  Follow our three step quickstart guide.
+  Follow our quickstart guide to install Tig and start capturing conversations
 </Card>
 
+---
 
-## Need inspiration?
-
-<Card
-  title="See complete examples"
-  icon="stars"
-  href="/examples"
->
-  Browse our showcase of exceptional documentation sites.
-</Card>
+<Info>
+Tig works with **Cursor**, **Claude Code**, **Windsurf**, and other AI coding assistants
+</Info>

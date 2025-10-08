@@ -1,11 +1,33 @@
 ---
 title: "Quickstart: Tig Connector"
-description: "Install the Tig Connector GitHub App to enable branch remapping and PR automation"
+description: "Install the Tig Connector GitHub App to enable branch remapping, PR view automation, and state tracking"
 ---
+
+## What the Tig Connector Does
+
+The **Tig Connector** is a GitHub App that automatically syncs your pull requests with Tig, providing three key features:
+
+<CardGroup cols={3}>
+<Card title="PR View Links" icon="link">
+  Automatically posts a comment with a link to view all AI interactions when you open a PR (if interactions exist)
+</Card>
+
+<Card title="State Tracking" icon="check-circle">
+  Keeps PR metadata in sync—updates state to "merged" or "closed" and tracks merged_at timestamps
+</Card>
+
+<Card title="Branch Remapping" icon="git-alt">
+  When PRs are merged, automatically remaps commits from the source branch to the target branch
+</Card>
+</CardGroup>
+
+<Info>
+The connector works silently in the background—once installed, it automatically handles all PR events without manual intervention.
+</Info>
 
 ## Install the Tig Connector GitHub App
 
-The **Tig Connector** GitHub App enables branch remapping and PR automation for your repositories. Follow these steps to manually install the app on one or more repositories.
+Follow these steps to manually install the app on one or more repositories.
 
 <Note>
 Share these steps with anyone who needs to link their GitHub repos to Tig without relying on the CLI automation.
@@ -121,6 +143,54 @@ Need to add more repositories later? You can modify your installation at any tim
 2. Click **Configure** beside Tig Connector
 3. Add or remove repositories as needed
 
+## How the PR View Feature Works
+
+Once installed, the Tig Connector automatically enhances your pull request workflow:
+
+### When You Open a PR
+
+<Steps>
+<Step title="Connector Detects PR">
+  When you open or reopen a pull request, the connector receives a webhook notification from GitHub
+</Step>
+
+<Step title="Checks for AI Interactions">
+  The connector fetches all commits in the PR and checks if any have captured AI interactions from tools like Cursor, Claude Code, or Windsurf
+</Step>
+
+<Step title="Posts a Comment (if interactions found)">
+  If the PR contains commits with AI interactions, the connector automatically posts a comment with a direct link to view them:
+
+  ```
+  https://app.usetig.dev/projects/{project_id}/pulls/{pr_number}
+  ```
+
+  <Info>
+  No comment is posted if there are no interactions—keeping your PR clean when there's nothing to show
+  </Info>
+</Step>
+
+<Step title="View AI Context">
+  Click the link to see a chronological timeline of all AI interactions from the PR, including:
+  - Prompts you sent to your AI assistant
+  - Code changes made by the AI
+  - File diffs and tool calls
+  - Links to the full conversation context
+</Step>
+</Steps>
+
+### When You Close or Merge a PR
+
+The connector keeps your data in sync with GitHub:
+
+- **State Updates**: Automatically updates the PR state to `merged` or `closed` in the Tig database
+- **Timestamp Tracking**: Records the exact `merged_at` timestamp from GitHub
+- **Branch Remapping**: When merged, remaps all commits from the source branch to the target branch (e.g., `feature-branch` → `main`)
+
+<Tip>
+This ensures your PR view page always shows the correct state badge (Open/Closed/Merged) and accurate metadata
+</Tip>
+
 ## Troubleshooting
 
 <AccordionGroup>
@@ -172,6 +242,6 @@ Now that you've installed the Tig Connector, you can:
 ---
 
 <Info>
-Installing the Tig Connector GitHub App brings branch remapping and PR automation online—make sure every repo using Tig has the app enabled.
+Installing the Tig Connector GitHub App enables automatic PR view links, state tracking, and branch remapping—make sure every repo using Tig has the app enabled.
 </Info>
 

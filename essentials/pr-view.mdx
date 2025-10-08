@@ -1,0 +1,262 @@
+---
+title: "PR View"
+description: "View all AI interactions from your pull requests in a unified timeline"
+---
+
+## What is PR View?
+
+PR View is a feature that automatically links your GitHub pull requests to all the AI interactions captured during development. When you open a PR, Tig posts a comment with a direct link to view the complete chronological timeline of how the code was built with AI assistance.
+
+<Frame>
+  <img src="/images/pr-view-example.png" alt="PR View Timeline" />
+</Frame>
+
+## How It Works
+
+### Automatic Comment Posting
+
+When you open or reopen a pull request:
+
+1. **Tig Connector detects the event** via GitHub webhook
+2. **Checks for AI interactions** in all commits included in the PR
+3. **Posts a comment** with a link if interactions are found:
+
+```
+https://app.usetig.dev/projects/{project_id}/pulls/{pr_number}
+```
+
+<Info>
+If no AI interactions are found, no comment is posted—keeping your PR clean and relevant
+</Info>
+
+### What You'll See
+
+The PR View page displays:
+
+<CardGroup cols={2}>
+<Card title="PR Metadata" icon="info-circle">
+  - Title and description
+  - State badge (Open/Closed/Merged)
+  - Author and PR number
+  - Branch flow visualization
+  - Link back to GitHub
+</Card>
+
+<Card title="AI Timeline" icon="clock">
+  - All interactions in chronological order
+  - Prompts sent to AI assistants
+  - Code changes made by AI
+  - File diffs and tool calls
+  - Links to full conversations
+</Card>
+</CardGroup>
+
+## Dynamic Updates
+
+PR View automatically stays in sync with your development:
+
+- **New commits added** → Interactions automatically appear (no new comment needed)
+- **PR merged** → State updates to "Merged" with timestamp
+- **PR closed** → State updates to "Closed"
+
+<Tip>
+The view queries commits by branch on each page load, so you always see the latest interactions without manual refresh
+</Tip>
+
+## Viewing a PR
+
+### From GitHub
+
+Click the link in the automatic comment posted by Tig Connector:
+
+<Steps>
+<Step title="Open Your PR">
+  Navigate to your pull request on GitHub
+</Step>
+
+<Step title="Find the Tig Comment">
+  Look for a comment from the Tig Connector app containing a URL
+</Step>
+
+<Step title="Click the Link">
+  The link opens the PR View page in the Tig web app
+</Step>
+</Steps>
+
+### From Tig Dashboard
+
+Navigate directly using the URL pattern:
+
+```
+https://app.usetig.dev/projects/{project_id}/pulls/{pr_number}
+```
+
+You can find your `project_id` in the Tig dashboard under project settings.
+
+## Understanding the Timeline
+
+Each interaction in the timeline shows:
+
+### Prompt Section
+- **Question or instruction** you sent to the AI
+- **Timestamp** when the interaction occurred
+- **AI model used** (e.g., Claude Sonnet 3.5)
+
+### Response Section
+- **Code changes** made by the AI (with syntax highlighting)
+- **Tool calls** executed (file reads, searches, etc.)
+- **File diffs** showing exactly what changed
+- **Response text** explaining the changes
+
+### Context Links
+- **Conversation link** - View the full conversation context
+- **Commit link** - See which commit captured this interaction
+
+## State Badges
+
+PR View displays one of three state badges:
+
+<CardGroup cols={3}>
+<Card title="Open" icon="circle-dot">
+  <span style={{color: '#16A34A'}}>Green badge</span> - PR is currently open and active
+</Card>
+
+<Card title="Closed" icon="circle-xmark">
+  <span style={{color: '#DC2626'}}>Red badge</span> - PR was closed without merging
+</Card>
+
+<Card title="Merged" icon="code-merge">
+  <span style={{color: '#9333EA'}}>Purple badge</span> - PR was successfully merged
+</Card>
+</CardGroup>
+
+The state automatically updates when you close or merge the PR on GitHub.
+
+## Privacy and Access Control
+
+PR View respects your project's access controls:
+
+- **Authentication required** - Users must be logged in to Tig
+- **Project access enforced** - Only team members with access to the project can view PR interactions
+- **No public access** - PR views are never publicly accessible
+
+<Warning>
+Make sure team members have been granted access to your project in Tig before they can view PR timelines
+</Warning>
+
+## Common Use Cases
+
+### Code Review Context
+
+**Problem**: Reviewers don't understand why certain code decisions were made
+
+**Solution**: PR View shows the exact prompts and AI responses that led to each change, providing full context for reviewers
+
+### Knowledge Transfer
+
+**Problem**: New team members need to understand how features were built
+
+**Solution**: PR View serves as a development diary, showing the iterative process of building features with AI
+
+### Debugging
+
+**Problem**: A bug was introduced in a PR but it's unclear where or why
+
+**Solution**: PR View timeline reveals exactly what the AI suggested and which interactions introduced the problematic code
+
+### Documentation
+
+**Problem**: Need to document complex code changes but don't remember the details
+
+**Solution**: PR View preserves all the prompts and explanations from when the code was written
+
+## Frequently Asked Questions
+
+<AccordionGroup>
+<Accordion title="Why didn't I get a comment on my PR?">
+  The Tig Connector only posts a comment if:
+  - The GitHub App is installed on your repository
+  - Your commits contain captured AI interactions
+  - The interactions are linked to commits in the PR
+
+  If no interactions are found, no comment is posted to avoid clutter.
+</Accordion>
+
+<Accordion title="Can I manually access a PR view without the comment?">
+  Yes! Navigate directly to:
+
+  ```
+  https://app.usetig.dev/projects/{project_id}/pulls/{pr_number}
+  ```
+
+  Replace `{project_id}` with your project ID and `{pr_number}` with the PR number.
+</Accordion>
+
+<Accordion title="What happens if I push new commits to the PR?">
+  The PR View automatically includes new interactions from new commits. No new comment is posted—just refresh the PR View page to see the latest timeline.
+</Accordion>
+
+<Accordion title="Can I see PRs from before Tig was installed?">
+  No. Only PRs created after installing the Tig Connector will have PR View links. However, if you manually navigate to the PR View URL, you'll see any interactions that were captured from commits in that PR (even if captured before the PR was created).
+</Accordion>
+
+<Accordion title="Can I disable the automatic comments?">
+  Not currently. The comments only appear when interactions are found, so they should always provide value. If this is causing issues, please contact support.
+</Accordion>
+
+<Accordion title="How are commits matched to PRs?">
+  PR View queries all commits on the PR's head branch. This means:
+  - New commits are automatically included
+  - The view always shows the latest state
+  - If the branch is reused, it may include commits not technically in the PR
+</Accordion>
+</AccordionGroup>
+
+## Troubleshooting
+
+### PR View Shows "No Interactions Found"
+
+**Possible causes**:
+- Commits were made without Tig capturing interactions
+- The PR was created before Tig was installed
+- Interactions weren't successfully uploaded to Tig
+
+**Solution**: Verify that `tig status` shows your setup is working and try creating a new commit with AI assistance.
+
+### Comment Not Posted on PR Open
+
+**Possible causes**:
+- GitHub App not installed on the repository
+- No interactions found in the PR commits
+- Webhook delivery failure
+
+**Solution**:
+1. Verify Tig Connector is installed: GitHub → Settings → Integrations → GitHub Apps
+2. Check that commits have captured interactions in your Tig dashboard
+3. Try closing and reopening the PR to trigger the webhook again
+
+### Wrong State Badge Showing
+
+**Possible causes**:
+- Temporary sync delay between GitHub and Tig
+- Webhook not received for PR close/merge event
+
+**Solution**: The state should update within seconds. If it persists, try refreshing the page or contact support.
+
+## Related Features
+
+<CardGroup cols={2}>
+<Card title="Tig Connector" icon="plug" href="/quickstart-connector">
+  Install the GitHub App to enable PR View automation
+</Card>
+
+<Card title="Tig Blame" icon="code-commit" href="/essentials/tig-blame">
+  View AI interactions for specific lines of code
+</Card>
+</CardGroup>
+
+---
+
+<Info>
+PR View is automatically enabled when you install the Tig Connector GitHub App—no additional configuration needed
+</Info>
