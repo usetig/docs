@@ -1,19 +1,15 @@
 ---
 title: "Quickstart: Tig Connector"
-description: "Install the Tig Connector GitHub App to enable branch remapping, PR view automation, and state tracking"
+description: "Install the Tig Connector GitHub App to enable branch remapping and PR view automation"
 ---
 
 ## What the Tig Connector Does
 
-The **Tig Connector** is a GitHub App that automatically syncs your pull requests with Tig, providing three key features:
+The **Tig Connector** is a GitHub App that automatically syncs your pull requests with Tig, providing two key features:
 
-<CardGroup cols={3}>
+<CardGroup cols={2}>
 <Card title="PR View Links" icon="link">
   Automatically posts a comment with a link to view all AI interactions when you open a PR (if interactions exist)
-</Card>
-
-<Card title="State Tracking" icon="check-circle">
-  Keeps PR metadata in sync—updates state to "merged" or "closed" and tracks merged_at timestamps
 </Card>
 
 <Card title="Branch Remapping" icon="git-alt">
@@ -179,16 +175,14 @@ Once installed, the Tig Connector automatically enhances your pull request workf
 </Step>
 </Steps>
 
-### When You Close or Merge a PR
+### When You Merge a PR
 
-The connector keeps your data in sync with GitHub:
+The connector automatically handles branch remapping:
 
-- **State Updates**: Automatically updates the PR state to `merged` or `closed` in the Tig database
-- **Timestamp Tracking**: Records the exact `merged_at` timestamp from GitHub
 - **Branch Remapping**: When merged, remaps all commits from the source branch to the target branch (e.g., `feature-branch` → `main`)
 
 <Tip>
-This ensures your PR view page always shows the correct state badge (Open/Closed/Merged) and accurate metadata
+This ensures that commits appear under the correct branch context in your Tig dashboard
 </Tip>
 
 ## Troubleshooting
@@ -242,6 +236,6 @@ Now that you've installed the Tig Connector, you can:
 ---
 
 <Info>
-Installing the Tig Connector GitHub App enables automatic PR view links, state tracking, and branch remapping—make sure every repo using Tig has the app enabled.
+Installing the Tig Connector GitHub App enables automatic PR view links and branch remapping—make sure every repo using Tig has the app enabled.
 </Info>
 
