@@ -16,18 +16,7 @@
           {
             "group": "Getting started",
             "pages": [
-              "index",
-              "quickstart",
-              "quickstart-mcp",
-              "quickstart-connector",
-              "examples"
-            ]
-          },
-          {
-            "group": "Features",
-            "pages": [
-              "essentials/pr-view",
-              "essentials/tig-blame"
+              "index"
             ]
           }
         ]
