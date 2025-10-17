@@ -16,7 +16,18 @@
           {
             "group": "Getting started",
             "pages": [
-              "index"
+              "index",
+              "quickstart",
+              "quickstart-simple-tig",
+              "quickstart-connector",
+              "examples"
+            ]
+          },
+          {
+            "group": "Features",
+            "pages": [
+              "essentials/pr-view",
+              "essentials/tig-blame"
             ]
           }
         ]

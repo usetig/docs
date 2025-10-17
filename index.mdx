@@ -5,7 +5,7 @@ description: "Capture, share, and search your AI development conversations"
 
 ## What is Tig?
 
-Tig is a platform that automatically captures AI conversations from tools like **Cursor**, **Claude Code**, and **Windsurf**, linking them to your commits and pull requests. It provides your team with searchable context for every line of code built with AI assistance.
+Tig is a platform that automatically captures AI conversations from **Claude Code** and **Cursor**, linking them to your commits and pull requests. It provides your team with searchable context for every line of code built with AI assistance.
 
 <CardGroup cols={2}>
 <Card title="Automatic Capture" icon="robot">
@@ -32,9 +32,13 @@ Tig is a platform that automatically captures AI conversations from tools like *
   Install the NPM package and authenticate with GitHub
 
   ```bash
-  npm install -g @tigtech/simple-tig
+  npm install -g @tigtech/tig
   tig login
   ```
+  
+  <Tip>
+  Prefer a lightweight chat-only option? See <a href="/quickstart-simple-tig">Simple Tig</a>.
+  </Tip>
 </Step>
 
 <Step title="Set Up Your Project">
@@ -47,7 +51,11 @@ Tig is a platform that automatically captures AI conversations from tools like *
 </Step>
 
 <Step title="Code as Usual">
-  Continue using your AI assistant—Tig automatically captures conversations on commit asynchronously
+  Continue using your AI assistant—Tig automatically captures conversations on commit and push
+  
+  <Info>
+  Chats are linked to commits, branches, and PRs. Use Simple Tig if you only want chat storage.
+  </Info>
 </Step>
 
 </Steps>
@@ -56,10 +64,35 @@ Tig is a platform that automatically captures AI conversations from tools like *
 
 Ready to capture your first AI conversation?
 
-Head to [app.usetig.dev](https://app.usetig.dev) to get started.
+<Card
+  title="Get Started in 5 Minutes"
+  icon="rocket"
+  href="/quickstart"
+  horizontal
+>
+  Follow our quickstart guide to install Tig and start capturing conversations
+</Card>
+
+<CardGroup cols={3}>
+<Card
+  title="Saving Chats (Simple Tig)"
+  icon="messages"
+  href="/quickstart-simple-tig"
+>
+  Lightweight option that stores chats only—no commit/branch linking
+</Card>
+
+<Card
+  title="GitHub Connector"
+  icon="github"
+  href="/quickstart-connector"
+>
+  Install the GitHub App for PR view automation and state tracking
+</Card>
+</CardGroup>
 
 ---
 
 <Info>
-Tig works with **Cursor** and **Claude Code** currently.
+Tig works with **Cursor** and **Claude Code**
 </Info>

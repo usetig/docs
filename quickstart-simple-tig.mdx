@@ -1,0 +1,65 @@
+---
+title: "Quickstart: Simple Tig"
+description: "Lightweight Tig that saves chats only (no commit/branch linking)"
+---
+
+## Get started with Simple Tig
+
+Simple Tig stores your AI chats so you can search and review them later. It does not link interactions to commits, branches, or PRs.
+
+### Step 1: Create an account
+
+Go to [app.usetig.dev](https://app.usetig.dev) and create an account.
+
+### Step 2: Install Simple Tig
+
+Install the Simple Tig package globally using npm:
+
+```bash
+npm install -g @tigtech/simple-tig
+```
+
+<Note>
+Make sure you have Node.js installed on your system before running this command.
+</Note>
+
+### Step 3: Login
+
+Authenticate your local installation:
+
+```bash
+tig login
+```
+
+<Info>
+This uses GitHub device flow. You’ll be prompted with an 8‑character code to enter at `https://github.com/login/device`.
+</Info>
+
+### Step 4: Capture chats
+
+Use your AI coding assistant as usual in your project. Simple Tig will capture chats locally and upload them when you push if configured.
+
+#### Upload existing chats
+
+```bash
+tig upload-chats
+```
+
+### Step 5: View your conversations
+
+Go to [app.usetig.dev](https://app.usetig.dev) to browse and search saved chats.
+
+## Limitations vs Tig
+
+- No commit/branch/PR linkage
+- No PR View comments
+- No Tig Blame
+
+If you need code-aware context (commits, PR timelines, blame), use the full Tig:
+
+<Card title="Use full Tig instead" icon="rocket" href="/quickstart">
+  Install Tig to link chats to commits, enable PR View, and use Tig Blame
+</Card>
+
+
+
